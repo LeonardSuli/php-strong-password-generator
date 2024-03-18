@@ -17,13 +17,18 @@
 
 // var_dump($_GET['password']);
 
-$password = ($_GET['password']);
+$lunghezza = ($_GET['lunghezza']);
+$caratteri = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*';
 
-// echo 'Password:' . ' ' . $password;
-echo '(Password length:' . ' ' . strlen($password) . ')';
+$password = '';
 
-echo '<br>';
-echo '<br>';
+while (strlen($password) < $lunghezza) {
+    $numero = rand(0, strlen($caratteri) - 1);
+    $c = $caratteri[$numero];
+    $password .= $c;
+}
+
+var_dump($password);
 
 
 
@@ -42,8 +47,8 @@ echo '<br>';
 
     <form action="" method="get">
 
-        <label for="password">Password</label>
-        <input type="text" name="password" id="password">
+        <label for="lunghezza">Lunghezza password</label>
+        <input type="text" name="lunghezza">
 
         <button type="submit">Genera password</button>
 
